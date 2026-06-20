@@ -1,16 +1,16 @@
 /* =============================================
-   DESIGN TOKENS
+   DESIGN TOKENS (Paleta Tierra de Fuego / Lujo Silencioso)
 ============================================= */
 :root {
-  --oro:          #b8860b;
-  --oro-claro:    #d4a827;
-  --oro-suave:    #f0e6c8;
-  --carbon:       #1a1a1a;
-  --carbon-medio: #2e2e2e;
-  --marfil:       #faf8f4;
-  --crema:        #f2ede4;
-  --gris-calido:  #4a4540;
-  --borde:        rgba(184,134,11,0.18);
+  --oro:          #a66d53; /* Terracota / Bronce cálido artesanal */
+  --oro-claro:    #c99a85; /* Bronce suave satinado */
+  --oro-suave:    #ebdcd5; /* Crema arena muy sutil */
+  --carbon:       #1c1a19; /* Carbón profundo con matiz cálido */
+  --carbon-medio: #2b2725; /* Fondo del taller */
+  --marfil:       #fbfaf7; /* Fondo general ultra limpio */
+  --crema:        #f4efe8; /* Fondo del héroe y secciones alternas */
+  --gris-calido:  #5a524e; /* Texto secundario legible y suave */
+  --borde:        rgba(166, 109, 83, 0.2); /* Bordes finos con el tono terracota */
 
   --ff-display: 'Cormorant Garamond', Georgia, serif;
   --ff-body:    'Montserrat', system-ui, sans-serif;
@@ -46,7 +46,7 @@ body {
   padding: 8px 0;
   text-align: center;
 }
-.top-bar a { color: var(--oro-claro); text-decoration: none; }
+.top-bar a { color: var(--oro-suave); text-decoration: none; }
 
 /* =============================================
    NAVBAR
@@ -62,13 +62,14 @@ body {
 }
 
 .navbar-brand {
-  font-family: var(--ff-display);
-  font-size: 1.9rem;
-  font-weight: 600;
-  color: var(--carbon) !important;
-  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
 }
-.navbar-brand span { color: var(--oro); }
+.navbar-logo {
+  height: 56px;
+  width: auto;
+  display: block;
+}
 
 .nav-link {
   font-family: var(--ff-body);
@@ -200,7 +201,8 @@ body {
   position: relative;
   overflow: hidden;
 }
-.hero-visual img {
+.hero-visual img,
+.hero-visual video {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center;
@@ -220,7 +222,7 @@ body {
   font-size: 2.4rem;
   font-weight: 300;
   line-height: 1;
-  color: var(--oro-claro);
+  color: var(--oro-suave);
 }
 .hero-badge-label {
   font-size: 0.72rem;
@@ -288,7 +290,7 @@ body {
 }
 .pilar:hover {
   border-color: var(--oro);
-  box-shadow: 0 12px 40px rgba(184,134,11,0.1);
+  box-shadow: 0 12px 40px rgba(166, 109, 83, 0.08);
   transform: translateY(-4px);
 }
 .pilar-icono {
@@ -323,7 +325,6 @@ body {
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 48px;
 }
 .filtro-btn {
   font-family: var(--ff-body);
@@ -332,8 +333,8 @@ body {
   text-transform: uppercase;
   font-weight: 500;
   padding: 9px 22px;
-  border: 1px solid rgba(0,0,0,0.2);
-  background: transparent;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: #fff;
   color: var(--carbon);
   cursor: pointer;
   transition: var(--transition);
@@ -342,6 +343,22 @@ body {
   background: var(--carbon);
   border-color: var(--carbon);
   color: #fff;
+}
+
+.categorias-label {
+  font-family: var(--ff-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 16px;
+}
+
+.divider-categorias {
+  height: 1px;
+  background: var(--borde);
+  margin: 56px 0 48px;
 }
 
 .producto-card {
@@ -354,7 +371,7 @@ body {
   flex-direction: column;
 }
 .producto-card:hover {
-  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+  box-shadow: 0 16px 48px rgba(166, 109, 83, 0.08);
   transform: translateY(-4px);
 }
 .producto-card-img {
@@ -464,7 +481,7 @@ body {
 .taller-img img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: brightness(0.75);
+  filter: brightness(0.8);
 }
 
 .taller-contenido {
@@ -480,7 +497,7 @@ body {
   font-size: 0.68rem;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--oro-claro);
+  color: var(--oro-suave);
   margin-bottom: 10px;
 }
 
@@ -492,7 +509,7 @@ body {
   margin-bottom: 48px;
   line-height: 1.15;
 }
-.taller-titulo em { font-style: italic; color: var(--oro-claro); }
+.taller-titulo em { font-style: italic; color: var(--oro-suave); }
 
 .taller-item {
   display: flex;
@@ -506,7 +523,7 @@ body {
   font-family: var(--ff-display);
   font-size: 3rem;
   font-weight: 300;
-  color: var(--oro);
+  color: var(--oro-claro);
   line-height: 1;
   min-width: 56px;
 }
@@ -533,113 +550,152 @@ body {
 }
 
 .contacto-inner {
-  max-width: 640px;
+  max-width: 720px; /* Un toque más amplio para PC */
   margin: 0 auto;
   text-align: center;
 }
-.contacto-inner .seccion-titulo { margin-bottom: 20px; }
+.contacto-inner .seccion-titulo { margin-bottom: 24px; }
 
 .contacto-bajada {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 400;
   color: var(--gris-calido);
   line-height: 1.8;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .contacto-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 40px;
+  gap: 28px;
+  margin-bottom: 48px;
   text-align: left;
 }
 
 .contacto-item {
-  padding: 28px 24px;
+  padding: 32px 28px;
   background: #fff;
   border: 1px solid var(--borde);
+  transition: var(--transition);
+}
+.contacto-item:hover {
+  border-color: var(--oro);
+  box-shadow: 0 10px 30px rgba(166, 109, 83, 0.05);
 }
 .contacto-item i {
-  font-size: 1.3rem;
+  font-size: 1.5rem; /* Iconos más grandes y visibles */
   color: var(--oro);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   display: block;
 }
 .contacto-item h6 {
   font-family: var(--ff-body);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--gris-calido);
-  margin-bottom: 6px;
+  color: var(--oro-claro); /* Color con más presencia para el rótulo */
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 .contacto-item p {
   font-family: var(--ff-display);
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Texto principal más legible */
   color: var(--carbon);
+  margin: 0;
 }
 .contacto-item a {
   color: var(--carbon);
   text-decoration: none;
   transition: var(--transition);
+  font-weight: 500;
 }
 .contacto-item a:hover { color: var(--oro); }
 
 .btn-whatsapp {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: #25D366;
   color: #fff;
   font-family: var(--ff-body);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  padding: 16px 36px;
+  padding: 18px 42px;
   text-decoration: none;
   transition: var(--transition);
   border: 1px solid #25D366;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.2);
 }
 .btn-whatsapp:hover {
   background: transparent;
   color: #25D366;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0);
 }
 
 /* =============================================
-   FOOTER
+   FOOTER (Contraste optimizado para PC)
 ============================================= */
 footer {
   background: var(--carbon);
-  color: rgba(255,255,255,0.5);
-  padding: 48px 0 32px;
-  font-size: 0.78rem;
+  color: var(--oro-suave); /* Cambiado de un gris apagado a un tono arena suave legible */
+  padding: 60px 0 32px;
+  font-size: 0.82rem;
 }
 footer .brand {
-  font-family: var(--ff-display);
-  font-size: 1.6rem;
-  font-weight: 300;
-  color: #fff;
+  display: flex;
+  align-items: center;
   margin-bottom: 8px;
 }
-footer .brand span { color: var(--oro); }
+.footer-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+}
 footer .footer-links a {
-  color: rgba(255,255,255,0.45);
+  color: #fff; /* Links completamente blancos para lectura perfecta */
   text-decoration: none;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   transition: var(--transition);
-  margin: 0 14px;
+  margin: 0 16px;
+  display: inline-block;
+  opacity: 0.8; /* Suavizado sutil por defecto */
 }
-footer .footer-links a:hover { color: var(--oro); }
+footer .footer-links a:hover { 
+  color: var(--oro-claro); /* Destaca en terracota al pasar el mouse */
+  opacity: 1;
+}
+
+/* Redes sociales en el footer */
+footer .bi-instagram, 
+footer .bi-whatsapp {
+  color: #fff !important; /* Fuerza los iconos a blanco */
+  opacity: 0.75;
+  font-size: 1.4rem;
+  transition: var(--transition);
+}
+footer .bi-instagram:hover { 
+  color: var(--oro-claro) !important; 
+  opacity: 1; 
+}
+footer .bi-whatsapp:hover { 
+  color: #25D366 !important; /* Verde clásico solo en el hover */
+  opacity: 1; 
+}
+
 footer .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  margin-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 40px;
   padding-top: 24px;
   text-align: center;
   letter-spacing: 1px;
+}
+footer .footer-bottom p {
+  color: rgba(255, 255, 255, 0.4) !important; /* El copyright queda sutil */
+  margin: 0;
 }
 
 /* =============================================
@@ -690,7 +746,7 @@ footer .footer-bottom {
 }
 .form-control {
   border-radius: 0;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.1);
   padding: 11px 14px;
   font-family: var(--ff-body);
   font-size: 0.88rem;
@@ -698,7 +754,7 @@ footer .footer-bottom {
 }
 .form-control:focus {
   border-color: var(--oro);
-  box-shadow: 0 0 0 3px rgba(184,134,11,0.1);
+  box-shadow: 0 0 0 3px rgba(166, 109, 83, 0.15);
 }
 
 .btn-modal-enviar {
@@ -715,7 +771,7 @@ footer .footer-bottom {
   cursor: pointer;
   transition: var(--transition);
 }
-.btn-modal-enviar:hover { background: #966d08; }
+.btn-modal-enviar:hover { background: var(--carbon); }
 
 /* =============================================
    ANIMACIONES SCROLL
@@ -753,8 +809,5 @@ footer .footer-bottom {
   .hero-badge { display: none; }
   .contacto-grid { grid-template-columns: 1fr; }
   .navbar-brand { font-size: 1.5rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .navbar-logo { height: 42px; }
 }
