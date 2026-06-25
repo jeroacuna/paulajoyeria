@@ -1,19 +1,3 @@
-/* =====================================================================
-   CATÁLOGO DE PRODUCTOS
-   =====================================================================
-   Para agregar, editar o sacar productos, modificá este array.
-   Cada producto necesita:
-     - id: identificador único (no repetir)
-     - nombre: nombre del producto
-     - categoria: "anillos" | "collares" | "aros" | "pulseras"
-     - precio: número, sin puntos ni comas (ej: 18500)
-     - desc: descripción corta
-     - img: link de la foto del producto
-     - tipo: "compra" (hay stock, se puede comprar directo) o
-             "consulta" (se consulta disponibilidad antes)
-     - destacado: true / false → si es true, aparece en "Piezas exclusivas"
-     - badge: opcional, texto corto tipo "Stock" o "Nuevo" (dejar "" si no querés ninguno)
-===================================================================== */
 const CATALOGO = [
   {
     id: "anillo-rio",
@@ -22,6 +6,7 @@ const CATALOGO = [
     precio: 18500,
     desc: "Plata 925 con textura orgánica. Inspirado en la forma del agua en movimiento.",
     img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&auto=format&fit=crop&q=80",
+    imgHover: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format&fit=crop&q=80", 
     tipo: "compra",
     destacado: true,
     badge: "Stock"
@@ -33,236 +18,300 @@ const CATALOGO = [
     precio: 21000,
     desc: "Textura de corteza en plata maciza. Robusto y delicado al mismo tiempo.",
     img: "https://images.unsplash.com/photo-1589674781759-c21c37956a44?w=600&auto=format&fit=crop&q=80",
+    imgHover: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600&auto=format&fit=crop&q=80",
     tipo: "compra",
-    destacado: false,
-    badge: "Stock"
-  },
-  {
-    id: "anillo-luna",
-    nombre: "Anillo Luna Nueva",
-    categoria: "anillos",
-    precio: 19800,
-    desc: "Diseño minimalista con piedra de luna natural engastada a mano.",
-    img: "https://images.unsplash.com/photo-1603561596112-0a132b757442?w=600&auto=format&fit=crop&q=80",
-    tipo: "consulta",
-    destacado: false,
-    badge: ""
-  },
-  {
-    id: "collar-raiz",
-    nombre: "Collar Raíz",
-    categoria: "collares",
-    precio: 26000,
-    desc: "Pieza de autor con colgante en plata y piedra turquesa natural. Edición limitada.",
-    img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&auto=format&fit=crop&q=80",
-    tipo: "consulta",
     destacado: true,
-    badge: ""
-  },
-  {
-    id: "collar-viento",
-    nombre: "Collar Viento",
-    categoria: "collares",
-    precio: 19500,
-    desc: "Cadena fina con colgante en plata calada. Minimalista y elegante para cualquier ocasión.",
-    img: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&auto=format&fit=crop&q=80",
-    tipo: "consulta",
-    destacado: false,
-    badge: ""
+    badge: "Único"
   },
   {
     id: "aros-luna",
-    nombre: "Aros Luna",
+    nombre: "Aros Luna Nueva",
     categoria: "aros",
-    precio: 14200,
-    desc: "Aros colgantes en forma de media luna. Livianos, modernos y llenos de personalidad.",
-    img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format&fit=crop&q=80",
+    precio: 16200,
+    desc: "Discos martillados a mano reflectantes. Capturan la luz con cada movimiento.",
+    img: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=600&auto=format&fit=crop&q=80",
+    imgHover: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format&fit=crop&q=80",
     tipo: "compra",
-    destacado: true,
+    destacado: false,
     badge: "Stock"
   },
+  {
+    id: "collar-duna",
+    nombre: "Collar Duna",
+    categoria: "collares",
+    precio: 29000,
+    desc: "Colgante escultórico con relieve satinado sobre cadena de eslabones sutiles.",
+    img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&auto=format&fit=crop&q=80",
+    imgHover: "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=600&auto=format&fit=crop&q=80",
+    tipo: "consulta",
+    destacado: true,
+    badge: "Encargo"
+  },
+  {
+    id: "pulsera-viento",
+    nombre: "Pulsera Viento",
+    categoria: "pulseras",
+    precio: 34000,
+    desc: "Brazalete rígido regulable hecho de hilo de plata trenzado artesanalmente.",
+    img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&auto=format&fit=crop&q=80",
+    imgHover: "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=600&auto=format&fit=crop&q=80",
+    tipo: "compra",
+    destacado: false,
+    badge: "Stock"
+  },
+  {
+    id: "anillo-origen",
+    nombre: "Anillo Origen",
+    categoria: "anillos",
+    precio: 0,
+    desc: "Pieza exclusiva con gema bruta a elección. Creamos tu diseño personalizado.",
+    img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&auto=format&fit=crop&q=80",
+    imgHover: "https://images.unsplash.com/photo-1589674781759-c21c37956a44?w=600&auto=format&fit=crop&q=80",
+    tipo: "consulta",
+    destacado: false,
+    badge: "Diseño"
+  }
 ];
 
-const NOMBRES_CATEGORIA = {
-  anillos: "Anillos",
-  collares: "Collares",
-  aros: "Aros",
-  pulseras: "Pulseras"
-};
-
 document.addEventListener("DOMContentLoaded", () => {
-
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-        const collapseEl = document.getElementById('menuMobile');
-        if (collapseEl && collapseEl.classList.contains('show')) {
-          bootstrap.Collapse.getInstance(collapseEl)?.hide();
-        }
+  
+  // =============================================
+  // 0. LÓGICA DE CAMBIO DE TEMA (LIGHT / DARK)
+  // =============================================
+  const btnPC = document.getElementById('themeToggle');
+  const btnMobile = document.getElementById('themeToggleMobile');
+  
+  const temaGuardado = localStorage.getItem('joyeria_theme') || 'dark';
+  
+  function actualizarIconosYClase(esClaro) {
+    if (esClaro) {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+    
+    [btnPC, btnMobile].forEach(btn => {
+      if (!btn) return;
+      const icono = btn.querySelector('i');
+      if (icono) {
+        icono.className = esClaro ? 'bi bi-moon-stars' : 'bi bi-sun';
       }
+    });
+
+    // Swap hero background image según el tema
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+      heroVideo.poster = esClaro
+        ? 'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=900&auto=format&fit=crop&q=80'
+        : 'img/anillos.png';
+    }
+  }
+  
+  if (temaGuardado === 'light') {
+    actualizarIconosYClase(true);
+  } else {
+    actualizarIconosYClase(false);
+  }
+  
+  [btnPC, btnMobile].forEach(btn => {
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const seActivoClaro = document.body.classList.toggle('light-mode');
+      localStorage.setItem('joyeria_theme', seActivoClaro ? 'light' : 'dark');
+      actualizarIconosYClase(seActivoClaro);
     });
   });
 
-  // Reveal on scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+  // =============================================
+  // 1. COMPORTAMIENTO NAVBAR ON SCROLL
+  // =============================================
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar?.classList.add('navbar-scrolled');
+    } else {
+      navbar?.classList.remove('navbar-scrolled');
+    }
+  });
 
-  function inicializarObserver() {
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  }
+  // =============================================
+  // 2. RENDERIZAR CATÁLOGO CON FILTROS
+  // =============================================
+  const contenedorGrid = document.getElementById('contenedorCatalogoFiltrado');
+  const botonesFiltro = document.querySelectorAll('.filtro-btn');
 
-  function formatearPrecio(num) {
-    return `$${parseInt(num).toLocaleString('es-AR')}`;
+  function formatearPrecio(valor) {
+    if (valor === 0) return 'Consultar precio';
+    return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(valor);
   }
 
   function crearCardProducto(p) {
-    const badgeHTML = p.badge ? `<span class="producto-badge">${p.badge}</span>` : '';
+    const textoBoton = p.tipo === 'compra' ? 'Comprar por WhatsApp' : 'Consultar diseño';
+    const precioTexto = p.precio === 0 ? 'Diseño a Pedido' : formatearPrecio(p.precio);
     return `
-      <div class="producto-card">
+      <div class="producto-card" data-id="${p.id}">
         <div class="producto-card-img">
-          <img src="${p.img}" alt="${p.nombre}"/>
-          ${badgeHTML}
+          ${p.badge ? `<span class="producto-badge">${p.badge}</span>` : ''}
+          <img src="${p.img}" alt="${p.nombre}" class="img-principal" loading="lazy">
+          ${p.imgHover ? `<img src="${p.imgHover}" alt="${p.nombre} detalle" class="img-secundaria" loading="lazy">` : ''}
         </div>
         <div class="producto-card-body">
-          <p class="producto-categoria">${NOMBRES_CATEGORIA[p.categoria]}</p>
-          <h3 class="producto-nombre">${p.nombre}</h3>
+          <h4 class="producto-nombre">${p.nombre}</h4>
+          <span class="producto-precio">${precioTexto}</span>
           <p class="producto-desc">${p.desc}</p>
-          <div class="producto-footer">
-            <span class="producto-precio">${formatearPrecio(p.precio)}</span>
-            <button class="btn-consultar btn-reservar"
-              data-nombre="${p.nombre}"
-              data-precio="${p.precio}"
-              data-tipo="${p.tipo}">
-              ${p.tipo === 'compra' ? 'Comprar' : 'Consultar'}
-            </button>
-          </div>
+          <button class="btn-consultar" data-id="${p.id}">${textoBoton}</button>
         </div>
       </div>
     `;
   }
 
-  // 1. Pintar DESTACADOS (Fijo arriba)
+  // Renderizar DESTACADOS
   const contenedorDestacados = document.getElementById('contenedorDestacados');
   if (contenedorDestacados) {
     const destacados = CATALOGO.filter(p => p.destacado);
     contenedorDestacados.innerHTML = destacados.map((p, i) => `
-      <div class="col-sm-6 col-lg-4 reveal reveal-delay-${(i % 3) + 1}">
+      <div class="col-12 col-md-6 col-lg-4 reveal reveal-delay-${(i % 3) + 1}">
         ${crearCardProducto(p)}
       </div>
     `).join('');
   }
 
-  // 2. Pintar e Interceptar CATÁLOGO DINÁMICO (Abajo de la botonera)
-  const contenedorCatalogo = document.getElementById('contenedorCatalogoFiltrado');
-  const botonesFiltro = document.querySelectorAll('.filtro-btn');
+  function inyectarProductos(categoriaFiltrada = 'todos') {
+    if (!contenedorGrid) return;
+    contenedorGrid.innerHTML = '';
 
-  function renderizarCatalogoFiltrado(categoria) {
-    if (!contenedorCatalogo) return;
+    const productosAMostrar = categoriaFiltrada === 'todos'
+      ? CATALOGO
+      : CATALOGO.filter(p => p.categoria === categoriaFiltrada);
 
-    const productosFiltrados = categoria === 'todos' 
-      ? CATALOGO 
-      : CATALOGO.filter(p => p.categoria === categoria);
-
-    if (productosFiltrados.length === 0) {
-      contenedorCatalogo.innerHTML = `<p class="text-center text-muted my-5">No hay productos en esta categoría por el momento.</p>`;
+    if (productosAMostrar.length === 0) {
+      contenedorGrid.innerHTML = `<div class="col-12 text-center py-5"><p>No se encontraron piezas en esta categoría por el momento.</p></div>`;
       return;
     }
 
-    contenedorCatalogo.innerHTML = productosFiltrados.map((p, i) => `
-      <div class="col-sm-6 col-lg-4 reveal">
+    contenedorGrid.innerHTML = productosAMostrar.map((p, i) => `
+      <div class="col-12 col-md-6 col-lg-4 reveal">
         ${crearCardProducto(p)}
       </div>
     `).join('');
 
-    // Re-ejecutar observer para que las nuevas cartas tengan animación al aparecer
+    vincularEventosDetalle();
     setTimeout(() => {
       document.querySelectorAll('#contenedorCatalogoFiltrado .reveal').forEach(el => el.classList.add('visible'));
     }, 50);
   }
 
-  // Render inicial del catálogo (muestra todos al cargar)
-  renderizarCatalogoFiltrado('todos');
-
-  // Lógica de clics en la botonera
-  botonesFiltro.forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelector('.filtro-btn.active')?.classList.remove('active');
-      this.classList.add('active');
-      const filtroSeleccionado = this.dataset.filter;
-      renderizarCatalogoFiltrado(filtroSeleccionado);
+  if (botonesFiltro) {
+    botonesFiltro.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        botonesFiltro.forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        const cat = e.currentTarget.getAttribute('data-filter');
+        inyectarProductos(cat);
+      });
     });
-  });
+  }
 
-  // Inicializar animaciones base
-  inicializarObserver();
+  inyectarProductos('todos');
 
-  // Modal WhatsApp Lógica Global
-  const modalEl = document.getElementById('modalReserva');
-  const modal = new bootstrap.Modal(modalEl);
+  // =============================================
+  // 3. SISTEMA DE GESTIÓN DEL MODAL & SINK WHATSAPP
+  // =============================================
+  let productoSel = '';
+  let precioSel = 0;
+  let tipoAccion = 'compra';
+
+  const modalElement = document.getElementById('modalReserva');
+  const modal = modalElement ? new bootstrap.Modal(modalElement) : null;
   const form = document.getElementById('formReserva');
+
   const modalTitulo = document.getElementById('modalTituloTexto');
-  const btnSubmit = document.getElementById('btnSubmitModal');
+  const itemNombre = document.getElementById('itemReservaNombre');
+  const itemPrecio = document.getElementById('itemReservaPrecio');
   const contenedorTalle = document.getElementById('contenedorTalle');
   const inputTalle = document.getElementById('clienteTalle');
-  let productoSel = '', precioSel = '', tipoAccion = 'consulta';
+  const btnSubmit = document.getElementById('btnSubmitModal');
 
-  const nombreGuardado = localStorage.getItem('joyeria_cliente_nombre');
-  const telGuardado = localStorage.getItem('joyeria_cliente_telefono');
-  if (nombreGuardado) document.getElementById('clienteNombre').value = nombreGuardado;
-  if (telGuardado) document.getElementById('clienteTelefono').value = telGuardado;
+  if(document.getElementById('clienteNombre')) {
+    document.getElementById('clienteNombre').value = localStorage.getItem('joyeria_cliente_nombre') || '';
+  }
+  if(document.getElementById('clienteTelefono')) {
+    document.getElementById('clienteTelefono').value = localStorage.getItem('joyeria_cliente_telefono') || '';
+  }
 
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.btn-reservar');
-    if (!btn) return;
+  function vincularEventosDetalle() {
+    const btns = document.querySelectorAll('.btn-consultar');
+    btns.forEach(b => {
+      b.addEventListener('click', (e) => {
+        const idProd = e.currentTarget.getAttribute('data-id');
+        const item = CATALOGO.find(p => p.id === idProd);
+        if (!item || !modal) return;
 
-    productoSel = btn.dataset.nombre;
-    precioSel = btn.dataset.precio;
-    tipoAccion = btn.dataset.tipo || 'consulta';
+        productoSel = item.nombre;
+        precioSel = item.precio;
+        tipoAccion = item.tipo;
 
-    document.getElementById('itemReservaNombre').textContent = productoSel;
-    document.getElementById('itemReservaPrecio').textContent = formatearPrecio(precioSel);
+        if(itemNombre) itemNombre.textContent = item.nombre;
+        if(itemPrecio) itemPrecio.textContent = item.precio === 0 ? 'A coordinar' : formatearPrecio(item.precio);
 
-    if (tipoAccion === 'compra') {
-      modalTitulo.textContent = 'Confirmar compra';
-      btnSubmit.textContent = 'Confirmar compra por WhatsApp';
-      contenedorTalle.classList.remove('d-none');
-      inputTalle.setAttribute('required', 'true');
-    } else {
-      modalTitulo.textContent = 'Consultar por WhatsApp';
-      btnSubmit.textContent = 'Enviar consulta por WhatsApp';
-      contenedorTalle.classList.add('d-none');
-      inputTalle.removeAttribute('required');
-    }
+        if (tipoAccion === 'compra') {
+          if(modalTitulo) modalTitulo.textContent = 'Coordinar Compra';
+          if(btnSubmit) btnSubmit.textContent = 'Confirmar pedido por WhatsApp';
+          contenedorTalle?.classList.remove('d-none');
+          inputTalle?.setAttribute('required', 'true');
+        } else {
+          if(modalTitulo) modalTitulo.textContent = 'Consultar por WhatsApp';
+          if(btnSubmit) btnSubmit.textContent = 'Enviar consulta por WhatsApp';
+          contenedorTalle?.classList.add('d-none');
+          inputTalle?.removeAttribute('required');
+        }
 
-    modal.show();
-  });
+        modal.show();
+      });
+    });
+  }
 
   if (form) {
     form.addEventListener('submit', e => {
       e.preventDefault();
+      
       const nombre = document.getElementById('clienteNombre').value;
       const tel = document.getElementById('clienteTelefono').value;
-      const talle = inputTalle.value;
+      const talle = inputTalle ? inputTalle.value : '';
 
       localStorage.setItem('joyeria_cliente_nombre', nombre);
       localStorage.setItem('joyeria_cliente_telefono', tel);
 
-      const telefono = '5493436958831';
+      const telefono = '5493436958831'; 
       let mensaje = tipoAccion === 'compra'
         ? `¡Hola Paula! Soy *${nombre}* (${tel}).\n\nQuiero *comprar*:\n- *${productoSel}*\n- Medida: *${talle}*\n- Precio: ${formatearPrecio(precioSel)}\n\n¿Cómo coordinamos el pago y el envío?`
         : `Hola Paula, soy *${nombre}* (${tel}).\n\nTe escribo desde la web, me interesa saber más sobre: *${productoSel}*. ¿Tenés disponibilidad? ¡Gracias!`;
 
-      modal.hide();
+      modal?.hide();
       form.reset();
-      document.getElementById('clienteNombre').value = nombre;
-      document.getElementById('clienteTelefono').value = tel;
 
-      window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(mensaje)}`, '_blank');
+      const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
     });
   }
+
+  // =============================================
+  // 4. ANIMACIONES SUTILES AL HACER SCROLL
+  // =============================================
+  function inicializarScrollReveal() {
+    const elementosReveal = document.querySelectorAll('.reveal');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); 
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    elementosReveal.forEach(el => observer.observe(el));
+  }
+
+  inicializarScrollReveal();
 });

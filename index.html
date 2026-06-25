@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paula Joyería · Piezas de Autor en Córdoba</title>
-  <meta name="description" content="Joyería de autor artesanal. Anillos, collares, aros y pulseras hechos a mano en plata 925. Piezas únicas y pedidos personalizados en Córdoba, Argentina."/>
+  <meta name="description" content="Joyería de autor artesanal. Anillos, collares, aros y pulseras hechos a mano en plata 925. Piezas uniques y pedidos personalizados en Córdoba, Argentina."/>
 
   <link rel="icon" type="image/png" href="/img/favicon.png"/>
   <link rel="apple-touch-icon" href="/img/favicon.png"/>
@@ -29,7 +29,7 @@
   <a href="https://wa.me/5493436958831">Escribinos por WhatsApp</a>
 </div>
 
-<nav class="navbar">
+<nav class="navbar navbar-transparent" id="mainNavbar">
   <div class="container d-flex align-items-center justify-content-between">
     <a class="navbar-brand" href="#inicio">
       <img src="/img/logo.png" alt="Paula Joyería" class="navbar-logo"/>
@@ -39,10 +39,18 @@
       <a class="nav-link" href="#productos">Colección</a>
       <a class="nav-link" href="#taller">Taller</a>
       <a class="nav-link" href="#contacto">Contacto</a>
+      <button id="themeToggle" class="btn-theme-toggle" aria-label="Cambiar tema">
+        <i class="bi bi-sun"></i>
+      </button>
     </div>
-    <button class="navbar-toggler d-md-none border-0 bg-transparent fs-4" data-bs-toggle="collapse" data-bs-target="#menuMobile">
-      <i class="bi bi-list"></i>
-    </button>
+    <div class="d-flex d-md-none align-items-center gap-2">
+      <button id="themeToggleMobile" class="btn-theme-toggle" aria-label="Cambiar tema">
+        <i class="bi bi-sun"></i>
+      </button>
+      <button class="navbar-toggler border-0 bg-transparent fs-4" data-bs-toggle="collapse" data-bs-target="#menuMobile">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
   </div>
   <div class="collapse" id="menuMobile">
     <div class="container pb-3 d-flex flex-column gap-2 pt-2">
@@ -71,8 +79,8 @@
     </div>
   </div>
   <div class="hero-visual">
-        <video autoplay muted loop playsinline poster="img/anillos.png" class="hero-video>
-          <source src="hero-video.mp4" type="video/mp4" />
+    <video autoplay muted loop playsinline poster="img/anillos.png" class="hero-video">
+      <source src="hero-video.mp4" type="video/mp4" />
       <img src="img/presentacion.png" alt="Joya artesanal Paula" />
     </video>
     <div class="hero-badge">
@@ -90,7 +98,7 @@
   <div class="container">
     <p class="seccion-eyebrow reveal">Nuestra filosofía</p>
     <h2 class="seccion-titulo reveal">Lo que hace a cada pieza <em>especial</em></h2>
-  <div class="row g-4">
+    <div class="row g-4">
       <div class="col-md-4 reveal reveal-delay-1">
         <div class="pilar">
           <i class="bi bi-award pilar-icono"></i>
@@ -125,7 +133,7 @@
 
     <div class="divider-categorias reveal"></div>
 
-    <div class="reveal text-center mb-4">
+    <div class="reveal text-center mb-5">
       <p class="categorias-label">Filtrar catálogo completo</p>
       <div class="filtros" id="botonesFiltroContenedor">
         <button class="filtro-btn active" data-filter="todos">Todos</button>
@@ -143,7 +151,8 @@
 <section id="taller">
   <div class="taller-grid">
     <div class="taller-img">
-      <img src="/img/logo 2.png" alt="Taller de joyería"/>
+      <img src="/img/logo-white.png" alt="Paula Joyería" class="taller-logo taller-logo-oscuro"/>
+      <img src="/img/logo.png" alt="Paula Joyería" class="taller-logo taller-logo-claro"/>
     </div>
     <div class="taller-contenido">
       <p class="seccion-eyebrow reveal" style="text-align:left; margin-bottom:10px;">El proceso creativo</p>
@@ -188,15 +197,11 @@
       <p class="contacto-bajada reveal">
         Hacemos pedidos a medida, ajustamos talles y materiales. Si tenés una idea, podemos darle forma juntos.
       </p>
-<div class="contacto-grid reveal">
+      <div class="contacto-grid reveal">
         <div class="contacto-item">
           <i class="bi bi-geo-alt"></i>
           <h6>Taller</h6>
-          <p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Eduardo+Branly+5878%2C+C%C3%B3rdoba%2C+Argentina" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
-              Eduardo Branly 5878, Córdoba Capital
-            </a>
-          </p>
+          <p><a>Córdoba Capital</a></p>
         </div>
         <div class="contacto-item">
           <i class="bi bi-instagram"></i>
@@ -288,6 +293,11 @@
           <div class="mb-3 d-none" id="contenedorTalle">
             <label class="form-label">Tu medida / talle</label>
             <input type="text" class="form-control" id="clienteTalle" placeholder="Ej: 14, M, 17cm…"/>
+            <small class="d-block mt-2 text-end">
+              <a href="#contacto" data-bs-dismiss="modal" class="text-decoration-underline" style="color: var(--oro); font-size: 0.75rem;">
+                <i class="bi bi-info-circle"></i> ¿No sabés tu talle? Consultanos
+              </a>
+            </small>
           </div>
           <button type="submit" class="btn-modal-enviar" id="btnSubmitModal">Enviar consulta por WhatsApp</button>
         </form>
