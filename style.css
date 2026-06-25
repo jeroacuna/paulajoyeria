@@ -29,14 +29,14 @@
    PALETA CLARA (Se activa con la clase .light-mode)
 ============================================= */
 body.light-mode {
-  --bg-principal:  #fbfaf7;       /* Marfil original de día */
-  --bg-secundario: #ffffff;       /* Blanco puro para que resalten las tarjetas */
-  --bg-bloque:     #f4efe8;       /* Crema suave para taller/footer */
-  --texto-puro:    #1c1a19;       /* Carbón para títulos legibles */
-  --texto-suave:   #5a524e;       /* Gris cálido para bloques de texto */
-  --texto-mutado:  #8e8e8e;       /* Gris apagado para descripciones secundarias */
-  --borde:         rgba(166, 109, 83, 0.2);
-  --filtro-hero:   brightness(0.9) contrast(1.02); /* El hero se adapta a la luz del día */
+  --bg-principal:  #e3ded7;       /* <-- Antes era blanco/crema claro. Ahora es un tono cemento/arena apagado muy premium */
+  --bg-secundario: #f4efe8;       /* Un crema suave para que las tarjetas resalten sobre el fondo */
+  --bg-bloque:     #d7d1c7;       /* Un tono un toque más oscuro para bloques como el taller */
+  --texto-puro:    #1c1a19;       /* Mantenés el carbón profundo para el texto */
+  --texto-suave:   #4a4542; 
+  --texto-mutado:  rgba(28, 26, 25, 0.7);
+  --borde:         rgba(166, 109, 83, 0.25);
+  --filtro-hero:   brightness(0.75) contrast(1);
 }
 
 /* =============================================
@@ -795,9 +795,9 @@ footer .footer-bottom {
 .taller-logo-oscuro { opacity: 0.18; }
 .taller-logo-claro  { opacity: 0; }
 
-body.light-mode .taller-logo-oscuro { opacity: 0; }
-body.light-mode .taller-logo-claro  { opacity: 0.22; }
-
+/* En modo claro, el fondo ahora es más oscurito, así que el logo OSCURO va a resaltar impecable */
+body.light-mode .taller-logo-oscuro { opacity: 0.35; } /* Subimos un toque la opacidad para que se note el diseño sobre el fondo arena */
+body.light-mode .taller-logo-claro  { opacity: 0; }
 /* =============================================
    LIGHT MODE — OVERRIDES COMPLETOS
 ============================================= */
