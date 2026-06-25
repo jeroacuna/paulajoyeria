@@ -312,6 +312,22 @@ body {
   color: var(--gris-calido);
 }
 
+/* ==================================================================
+   SOLO MODIFICACIÓN EN PC: Cambia el tamaño de letras y el icono
+================================================================== */
+@media (min-width: 992px) {
+  .pilar-icono {
+    font-size: 2.5rem;    /* Icono sutilmente más grande en monitores */
+  }
+  .pilar h4 {
+    font-size: 1.6rem;    /* Título con más peso visual en PC */
+  }
+  .pilar p {
+    font-size: 1.05rem;   /* Párrafo más grande para que sea legible en PC */
+    line-height: 1.7;
+  }
+}
+
 /* =============================================
    SECCIÓN PRODUCTOS
 ============================================= */
