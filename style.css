@@ -1065,3 +1065,91 @@ body.light-mode .navbar-scrolled {
     text-align:center;
   }
 }
+/* =============================================
+   LOADER PREMIUM
+============================================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:var(--bg-principal);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    transition:opacity .7s ease, visibility .7s ease;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.loader-logo{
+
+    width:160px;
+
+    opacity:0;
+
+    animation:logoFade .7s ease forwards;
+}
+
+.loader-line{
+
+    width:180px;
+
+    height:2px;
+
+    margin-top:28px;
+
+    background:rgba(255,255,255,.08);
+
+    overflow:hidden;
+
+    border-radius:50px;
+}
+
+.loader-line span{
+
+    display:block;
+
+    width:0%;
+
+    height:100%;
+
+    background:var(--oro);
+
+    animation:loaderLine 1.2s ease forwards;
+}
+
+@keyframes logoFade{
+
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes loaderLine{
+
+    from{
+        width:0%;
+    }
+
+    to{
+        width:100%;
+    }
+
+}
