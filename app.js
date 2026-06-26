@@ -176,9 +176,12 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join('');
   }
 
-  function inyectarProductos(categoriaFiltrada = 'todos') {
-    if (!contenedorGrid) return;
-    contenedorGrid.innerHTML = '';
+function inyectarProductos(categoriaFiltrada = 'todos') {
+  if (!contenedorGrid) return;
+
+  contenedorGrid.classList.add('fade-out');
+
+  setTimeout(() => {
 
     const productosAMostrar = categoriaFiltrada === 'todos'
       ? CATALOGO
@@ -186,33 +189,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (productosAMostrar.length === 0) {
       contenedorGrid.innerHTML = `<div class="col-12 text-center py-5"><p>No se encontraron piezas en esta categoría por el momento.</p></div>`;
-      return;
+    } else {
+      contenedorGrid.innerHTML = productosAMostrar.map((p) => `
+        <div class="col-12 col-md-6 col-lg-4 reveal">
+          ${crearCardProducto(p)}
+        </div>
+      `).join('');
     }
 
-    contenedorGrid.innerHTML = productosAMostrar.map((p, i) => `
-      <div class="col-12 col-md-6 col-lg-4 reveal">
-        ${crearCardProducto(p)}
-      </div>
-    `).join('');
+    document.querySelectorAll('#contenedorCatalogoFiltrado .reveal')
+      .forEach(el => el.classList.add('visible'));
 
-    vincularEventosDetalle();
-    setTimeout(() => {
-      document.querySelectorAll('#contenedorCatalogoFiltrado .reveal').forEach(el => el.classList.add('visible'));
-    }, 50);
-  }
+    requestAnimationFrame(() => {
+      contenedorGrid.classList.remove('fade-out');
+      contenedorGrid.classList.add('fade-in');
 
-  if (botonesFiltro) {
-    botonesFiltro.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        botonesFiltro.forEach(b => b.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-        const cat = e.currentTarget.getAttribute('data-filter');
-        inyectarProductos(cat);
-      });
+      setTimeout(() => {
+        contenedorGrid.classList.remove('fade-in');
+      }, 250);
     });
-  }
 
-  inyectarProductos('todos');
+  }, 120);
+}
+if (botonesFiltro.length) {
+  botonesFiltro.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+
+      botonesFiltro.forEach(b => b.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+
+      const categoria = e.currentTarget.dataset.filter;
+
+      inyectarProductos(categoria);
+
+    });
+  });
+}
+inyectarProductos('todos');
 
   // =============================================
   // 3. SISTEMA DE GESTIÓN DEL MODAL & SINK WHATSAPP
