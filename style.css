@@ -983,17 +983,85 @@ body.light-mode .navbar-scrolled {
   .pilar p { font-size: 1.05rem; }
 }
 @media (max-width: 991px) {
-  .hero { min-height: auto; margin-top: 0; padding-top: 0; }
-  .navbar { position: sticky; background-color: var(--bg-principal) !important; padding: 16px 0 !important; border-bottom-color: var(--borde) !important; }
-  .hero-visual { height: 65vw; min-height: 360px; position: relative; }
-  .hero-copy { padding: 60px 24px; }
-  .taller-grid { grid-template-columns: 1fr; }
-  .taller-img { min-height: 300px; }
-  .taller-contenido { padding: 48px 24px; }
-  .producto-card-img { height: 360px; }
+  .navbar {
+    position: sticky;
+    background-color: var(--bg-principal) !important;
+    padding: 16px 0 !important;
+    border-bottom-color: var(--borde) !important;
+  }
+  /* HERO */
+  .hero{
+    position: relative;
+    min-height: 100dvh;
+    margin-top: 0;
+    padding-top: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-visual{
+    position: absolute !important;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .hero-video,
+  .hero-visual video,
+  .hero-visual img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+  .hero-copy{
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    padding: 40px 24px;
+  }
+  /* RESTO */
+  .taller-grid {
+    grid-template-columns: 1fr;
+  }
+  .taller-img {
+    min-height: 300px;
+  }
+  .taller-contenido {
+    padding: 48px 24px;
+  }
+  .producto-card-img {
+    height: 360px;
+  }
 }
 @media (max-width: 767px) {
-  .contacto-grid { grid-template-columns: 1fr; }
-  .navbar-logo { height: 42px; }
-  .producto-card-img { height: 320px; }
+  .contacto-grid {
+    grid-template-columns: 1fr;
+  }
+  .navbar-logo {
+    height: 42px;
+  }
+  .producto-card-img {
+    height: 320px;
+  }
+  .hero-copy{
+    padding: 30px 20px;
+  }
+  .hero-titulo{
+    font-size: clamp(2.3rem, 10vw, 3.4rem);
+  }
+  .hero-subtitulo{
+    font-size: .95rem;
+  }
+  .hero-ctas{
+    flex-direction: column;
+    width:100%;
+    max-width:320px;
+  }
+  .btn-oro,
+  .btn-outline-oro{
+    width:100%;
+    text-align:center;
+  }
 }
